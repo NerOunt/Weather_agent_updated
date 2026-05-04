@@ -1,4 +1,6 @@
-# Бот погоды
+# Погодный Бот
+
+Бот, который мгновенно показывает погоду в любом городе. Просто отправьте название города — и получите актуальную температуру, влажность, давление, скорость ветра и прогноз.
 
 ## Как пользоваться
 
@@ -14,8 +16,6 @@
 - `/help`
 - `/weather`
 - `/today`
-
-Reply-кнопки Telegram появляются после первого ответа бота. Это ограничение Telegram: бот не может показать такую клавиатуру пользователю до первого сообщения в чат.
 
 Основной сценарий без ручного ввода команд:
 
@@ -86,14 +86,6 @@ weather-agent/
 4. Укажите username для бота.
 5. BotFather выдаст `TELEGRAM_BOT_TOKEN`.
 
-Если Telegram token случайно опубликован:
-
-1. Откройте `@BotFather`.
-2. Отправьте `/mybots`.
-3. Выберите нужного бота.
-4. Откройте `API Token`.
-5. Нажмите `Revoke current token`.
-6. Новый token сохраните только в `.env`.
 
 ## Команды в BotFather
 
@@ -104,6 +96,19 @@ start - Запуск бота
 help - Список команд
 weather - Погода сейчас
 today - Прогноз на сегодня
+```
+
+## OpenWeather API key
+
+1. Зарегистрируйтесь на OpenWeather.
+2. Создайте API key в личном кабинете.
+3. Добавьте ключ в `.env` как `WEATHER_API_KEY`.
+
+Используются endpoints:
+
+```text
+https://api.openweathermap.org/data/2.5/weather
+https://api.openweathermap.org/data/2.5/forecast
 ```
 
 ## Установка
@@ -160,11 +165,9 @@ Copy-Item .env.example .env
 ```env
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
 WEATHER_API_KEY=your_openweather_api_key_here
-DEFAULT_CITY=Москва
+DEFAULT_CITY=<город>
 DEFAULT_TIMEZONE=Europe/Moscow
 ```
-
-Не публикуйте `.env` в GitHub. Он добавлен в `.gitignore`.
 
 ## Запуск
 
